@@ -1,2 +1,7 @@
 @import "./reset.css";
-@import "./component/tree.css";
+
+/* screen */
+@import "./screen/monster_tree.css";
+
+/* component */
+@import "./component/card.css";

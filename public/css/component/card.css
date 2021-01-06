@@ -1,17 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
 
-.main-monster_tree {
-    
-}
+
 
 .container {
     display: flex;
     justify-content: center;
-    margin: 30px;
+    align-items: center;
     height: 200px;
     width: 200px;
 
+}
+
+.container_half {
+    height: 100px;
+    width: 100px;
+}
+
+.container_halfq {
+    height: 75px;
+    width: 75px;
 }
 
 .monster_card {
@@ -21,16 +29,34 @@
     align-items: center;
     width: 150px;
     height: 150px;
-    margin: 30px;
-    perspective: 1000px;
-
-    border-radius: 30px;
-    
+    border-radius: 30px;   
     box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+}
+
+.monster_card_half {
+    width: 75px;
+    height: 75px;
+    border-radius: 15px;
+}
+.monster_card_halfq {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
 }
 
 .monster_card-img {
     border-radius: 30px;
+}
+
+.monster_card-img_half {
+    width: 75px;
+    height: 75px;
+    border-radius: 15px;
+}
+.monster_card-img_halfq {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
 }
 
 .monster_card-grade {
@@ -44,6 +70,13 @@
     text-shadow: -2px 0 red, 0 2px red, 2px 0 red, 0 -2px red;
 }
 
+.monster_card-grade_half {
+    font-size: 15px;
+}
+.monster_card-grade_halfq {
+    font-size: 10px;
+}
+
 .monster_card-name {
     position: absolute;
     bottom: 5%;
@@ -53,4 +86,11 @@
     font-size: 25px;
     color: black;
     text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+}
+
+.monster_card-name_half {
+    font-size: 13px;
+}
+.monster_card-name_halfq {
+    font-size: 13px;
 }

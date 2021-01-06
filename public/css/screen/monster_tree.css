@@ -1,0 +1,17 @@
+
+.monster_tree {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    border: black solid 1px;
+
+}
+
+.monster_tree-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}

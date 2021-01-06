@@ -10,18 +10,81 @@
     <header></header>
     <main class="main-monster_tree">
         <% for(i = 0; i < trees.length; i++) { %>
-
-        <% } %>
-
-        <% for(i = 0; i < list.length; i++) { %>
-            <div class="container container_id-<%=list[i].id %>">
-                <div class="monster_card card_id-<%=list[i].id %>">
-                    <img src="/img/monster_img/<%=list[i].name %>.png" class="monster_card-img">
-                    <div class="monster_card-grade"><%=list[i].grade %></div>
-                    <div class="monster_card-name"><%=list[i].name %></div>
-                </div>
-            </div>
+            <% var level = 0; %>
+            <% for(j = 1; j <= trees[i].length - 1; j = j * 2) { %>
+                <% level++; %>
+            <% } %>
             
+            <div class="monster_tree">
+                <% for(j = 0; j < level; j++) { %>
+                    <div class="monster_tree-row">
+                        <% for(k = 2 ** j; k < 2 ** (j+1); k++) { %>
+                            <% var id_num; var IsExist = false; %>
+                            <% for(l = 0; l < list.length; l++) { %>
+                                <% if(list[l].name === trees[i][k]) { %>
+                                    <% id_num = l; IsExist = true; break; %>
+                                <% } %>
+                            <% } %>
+
+                            <% if(j < 4) { %>
+                                <% if(IsExist) { %>
+                                    <div class="container ">
+                                        <div class="monster_card ">
+                                            <img src="/img/monster_img/<%=list[id_num].name %>.png" class="monster_card-img">
+                                            <div class="monster_card-grade"><%=list[id_num].grade %></div>
+                                            <div class="monster_card-name"><%=list[id_num].name %></div>
+                                        </div>
+                                    </div>
+                                <% }else { %>
+                                    <div class="container ">
+                                        <div class="monster_card ">
+                                            <img src="/img/monster_img/empty.png" class="monster_card-img">
+                                            <div class="monster_card-grade">X</div>
+                                            <div class="monster_card-name">EMPTY</div>
+                                        </div>
+                                    </div>
+                                <% } %>
+                            <% }else if(j < 5) { %>
+                                <% if(IsExist) { %>
+                                    <div class="container container_half">
+                                        <div class="monster_card monster_card_half">
+                                            <img src="/img/monster_img/<%=list[id_num].name %>.png" class="monster_card-img monster_card-img_half">
+                                            <div class="monster_card-grade monster_card-grade_half"><%=list[id_num].grade %></div>
+                                            <div class="monster_card-name monster_card-name_half"><%=list[id_num].name %></div>
+                                        </div>
+                                    </div>
+                                <% }else { %>
+                                    <div class="container container_half">
+                                        <div class="monster_card monster_card_half ">
+                                            <img src="/img/monster_img/empty.png" class="monster_card-img monster_card-img_half">
+                                            <div class="monster_card-grade monster_card-grade_half">X</div>
+                                            <div class="monster_card-name monster_card-name_half">EMPTY</div>
+                                        </div>
+                                    </div>
+                                <% } %>
+                            <% } else { %>
+                                <% if(IsExist) { %>
+                                    <div class="container container_halfq">
+                                        <div class="monster_card monster_card_halfq">
+                                            <img src="/img/monster_img/<%=list[id_num].name %>.png" class="monster_card-img monster_card-img_halfq">
+                                            <div class="monster_card-grade monster_card-grade_halfq"><%=list[id_num].grade %></div>
+                                            <div class="monster_card-name monster_card-name_halfq"><%=list[id_num].name %></div>
+                                        </div>
+                                    </div>
+                                <% }else { %>
+                                    <div class="container container_halfq">
+                                        <div class="monster_card monster_card_halfq ">
+                                            <img src="/img/monster_img/empty.png" class="monster_card-img monster_card-img_halfq">
+                                            <div class="monster_card-grade monster_card-grade_halfq">X</div>
+                                            <div class="monster_card-name monster_card-name_halfq">EMPTY</div>
+                                        </div>
+                                    </div>
+                                <% } %>
+                            <% } %>
+                        <% } %>
+                    </div>
+                <% } %>
+            </div>
 
         <% } %>
 
