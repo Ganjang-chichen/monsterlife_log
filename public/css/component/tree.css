@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
+
+.main-monster_tree {
+    
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    height: 200px;
+    width: 200px;
+
+}
+
+.monster_card {
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    margin: 30px;
+    perspective: 1000px;
+
+    border-radius: 30px;
+    
+    box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+}
+
+.monster_card-img {
+    border-radius: 30px;
+}
+
+.monster_card-grade {
+    position: absolute;
+    top: 5%;
+    right: 10%;
+
+    font-family: 'Yellowtail', cursive;
+    font-size: 30px;
+    color: yellow;
+    text-shadow: -2px 0 red, 0 2px red, 2px 0 red, 0 -2px red;
+}
+
+.monster_card-name {
+    position: absolute;
+    bottom: 5%;
+    text-align: center;
+
+    font-family: 'East Sea Dokdo', cursive;
+    font-size: 25px;
+    color: black;
+    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+}

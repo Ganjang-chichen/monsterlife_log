@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>몬스터 트리</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header></header>
+    <main class="main-monster_tree">
+        <% for(i = 0; i < trees.length; i++) { %>
+
+        <% } %>
+
+        <% for(i = 0; i < list.length; i++) { %>
+            <div class="container container_id-<%=list[i].id %>">
+                <div class="monster_card card_id-<%=list[i].id %>">
+                    <img src="/img/monster_img/<%=list[i].name %>.png" class="monster_card-img">
+                    <div class="monster_card-grade"><%=list[i].grade %></div>
+                    <div class="monster_card-name"><%=list[i].name %></div>
+                </div>
+            </div>
+            
+
+        <% } %>
+
+    </main>
+    <footer>
+        <script src="/js/component/card.js"></script>
+    </footer>
+</body>
+</html>
