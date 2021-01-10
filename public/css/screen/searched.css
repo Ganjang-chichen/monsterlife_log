@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+And+White+Picture&display=swap');
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.main-searched {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    font-family: 'Black And White Picture', sans-serif;
+    perspective: 1000;
+}
+
+.searched {
+    transform-style: preserve-3d;
+}
+
+.searched_subj {
+    border-bottom: solid darkred 2px;
+    height: 60px;
+    margin: 30px 0px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.searched_idx {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.searched_idx-rows {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 20px;
+    animation: fadein 0.5s ease-in-out;
+}
+
+.searched_idx-rows-col_name {
+    margin-bottom: 30px;
+}
+
+.searched_idx-rows div {
+    width: 100px;
+    text-align: center;
+    text-shadow: #f1d900 1px 0 10px;
+}
+.searched_idx-rows div form button {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    text-shadow: #f1d900 1px 0 10px;
+}
+
+.searched_idx-rows-col_name div {
+    text-shadow: tomato 1px 0 10px;
+}

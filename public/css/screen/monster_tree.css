@@ -1,11 +1,16 @@
 
+.body-monster_tree {
+    background-color: peru;
+}
+
 .monster_tree {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 100%;
-    border: black solid 1px;
+    border-bottom: rgba(0, 0, 0, 0.2) solid 1px;
+    padding: 50px 0px;
 
 }
 

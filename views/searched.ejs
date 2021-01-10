@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색 결과</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header></header>
+    <main class="main-searched">
+        <div class="searched">
+            <div class="searched_subj">
+                <% if(option === 'monster_name' ) { %>
+                    <span class="searched_subj-option">검색 조건 : 몬스터 %></span>
+                <% }else { %>
+                    <span class="searched_subj-option">검색 조건 : 농장주 %></span>
+                <% } %>
+                <span class="dance">| ዪ |</span>
+                <span class="searched_subj-value">검색 값 : <%=value %></span>
+            </div>
+            <div class="searched_idx">
+                <div class="searched_idx-rows searched_idx-rows-col_name ">
+                    <div class="searched_idx-farm_name">농장주</div>
+                    <div class="searched_idx-monster_name">몬스터</div>
+                    <div class="searched_idx-population">개체수</div>
+                    <div class="searched_idx-thanks">추천</div>
+                    <div class="searched_idx-shit">신고</div>
+                </div>
+                <% for(i = 0; i < list.length; i++) { %>
+                    <div class="searched_idx-rows">
+                        <div class="searched_idx-farm_name"><%=list[i].farm_name %></div>
+                        <div class="searched_idx-monster_name"><%=list[i].monster_name %></div>
+                        <div class="searched_idx-population"><%=list[i].population %></div>
+                        <div class="searched_idx-thanks">
+                            <form action="/searched-thanks" method="POST">
+                                <button type="submit">
+                                    <i class="<%=isclicked_thanks %> fa-thumbs-up"></i>
+                                </button>
+                                <%=list[i].thanks %>
+                                <input type="text" value="<%=isclicked_thanks %>" class="hide" name="thanks">
+                                <input type="text" value="<%=list[i].monster_name %>" class="hide" name="searched_monster_name">
+                            </form>
+                        </div>
+                        <div class="searched_idx-shit">
+                            <form action="/searched-shit" method="POST">
+                                <button type="submit">
+                                    <i class="<%=isclicked_shit %> fa-thumbs-down"></i>
+                                </button>
+                                <%=list[i].shit %>
+                                <input type="text" value="<%=isclicked_shit %>" class="hide" name="shit">
+                                <input type="text" value="<%=list[i].monster_name %>" class="hide" name="searched_monster_name">
+                            </form>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <script src="https://kit.fontawesome.com/c9ac2544ad.js" crossorigin="anonymous"></script>
+        
+    </footer>
+</body>
+</html>

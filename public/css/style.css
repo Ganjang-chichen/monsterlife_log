@@ -1,7 +1,18 @@
 @import "./reset.css";
 
 /* screen */
+@import "./screen/index.css";
 @import "./screen/monster_tree.css";
+@import "./screen/monstercard.css";
+@import "./screen/searched.css";
 
 /* component */
 @import "./component/card.css";
+
+.hide {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}

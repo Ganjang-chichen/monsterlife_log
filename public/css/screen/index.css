@@ -1,0 +1,92 @@
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.body-index {
+    background-color: tomato;
+}
+
+.rainny_monster {
+    position: fixed;
+    
+}
+
+.rainny_monster img {
+    
+    animation: rotate 5s linear infinite;
+}
+
+
+#rain1 {
+    top: 10%;
+    left: 10%;
+}
+#rain2 {
+    top: 36%;
+    left: 36%;
+}
+#rain3 {
+    top: 62%;
+    left: 62%;
+}
+#rain4 {
+    top: 90%;
+    left: 90%;
+}
+
+#rain5 {
+    top: 36%;
+    left: 10%;
+}
+#rain6 {
+    top: 62%;
+    left: 36%;
+}
+#rain7 {
+    top: 90%;
+    left: 62%;
+}
+#rain8 {
+    top: 10%;
+    left: 90%;
+}
+
+#rain9 {
+    top: 62%;
+    left: 10%;
+}
+#rain10 {
+    top: 90%;
+    left: 36%;
+}
+#rain11 {
+    top: 10%;
+    left: 62%;
+}
+#rain12 {
+    top: 36%;
+    left: 90%;
+}
+
+#rain13 {
+    top: 90%;
+    left: 10%;
+}
+#rain14 {
+    top: 10%;
+    left: 36%;
+}
+#rain15 {
+    top: 36%;
+    left: 62%;
+}
+#rain16 {
+    top: 62%;
+    left: 90%;
+}

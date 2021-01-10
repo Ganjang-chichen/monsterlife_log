@@ -12,6 +12,11 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
 
+var selected_monster = 'empty';
+var searching = `오베론`;
+var option = `monster_name`;
+var searched_isclicked_thanks = 'far';
+var searched_isclicked_shit = 'far';
 
 app.get('/', (req, res) => {
     res.redirect('/index');
@@ -29,7 +34,7 @@ app.get('/monster_tree', (req, res) => {
     conn.query(sql, (err, rows, fields) => {
 
         if(err) {
-            console.log("error accuered!\n" + err);
+            console.log("error accuered at monster tree!\n" + err);
             res.redirect('/index');
         }
         else {
@@ -135,8 +140,6 @@ app.get('/monster_tree', (req, res) => {
             }
             count = 0;
             
-            console.log(trees);
-
             res.render('monster_tree.ejs', {list: rows, trees : trees});
         }
     })
@@ -144,5 +147,171 @@ app.get('/monster_tree', (req, res) => {
     
 });
 
+app.post('/monstercard_post', (req, res) => {
+    selected_monster = req.body.name;
+
+    res.redirect('/monstercard');
+});
+
+app.get('/monstercard', (req, res) => {
+    var sql = `SELECT * FROM monster WHERE name = '${selected_monster}'`;
+    conn.query(sql, (err, rows, fields) => {
+
+        if(err) {
+            console.log("error accuered at monster card!\n" + err);
+            res.redirect('/index');
+        }else {
+            
+            res.render('monster_card.ejs', {list : rows});
+        }
+
+    });
+} );
+
+app.post('/searched_post', (req, res) => {
+    searching = req.body.monstercard_name;
+    option = `monster_name`;
+    console.log(searching, option);
+    res.redirect('/searched');
+});
+
+app.get('/searched', (req, res) => {
+    var sql = `SELECT farm_name, monster_name, SUM(population) "population", SUM(thanks) "thanks", SUM(shit) "shit" FROM log ` +
+                `WHERE shelf_life > sysdate() ` +
+                `AND ${option} = '${searching}' ` +
+                `group by farm_name, monster_name ` +
+                `ORDER BY SUM(population), SUM(thanks), SUM(shit); `;
+    
+    conn.query(sql, (err, rows, fields) => {
+        if(err) {
+            console.log("error accuered at searched\n" + err);
+            res.redirect('/index');
+        }else {
+            console.log(rows);
+            res.render('searched.ejs', {list : rows,
+                                        option : option,
+                                        value : searching,
+                                        isclicked_thanks : searched_isclicked_thanks,
+                                        isclicked_shit : searched_isclicked_shit});
+        }
+    });
+});
+
+app.post('/searched-thanks', (req, res) => {
+    var searched_monster_name = req.body.searched_monster_name;
+    if(req.body.thanks === 'fas') {
+        searched_isclicked_thanks = 'far';
+
+        sql = `SELECT log_idx FROM log ` +
+                `WHERE monster_name = '${searched_monster_name}' ` +
+                `ORDER BY shelf_life DESC LIMIT 1`;
+        console.log(sql);
+        
+        conn.query(sql, (err, rows, fields) => {
+            if(err) {
+                console.log('Error accured' + err);
+            }else {
+                sql_update = `UPDATE log SET thanks = thanks - 1 ` +
+                                `WHERE log_idx = ${rows[0].log_idx}`;
+                console.log(sql_update);
+
+                conn.query(sql_update, (err, rows) => {
+                    if(err) {
+                        console.log(`error accured` + err);
+                    }
+                    else {
+
+                    }
+                });
+            }
+        });
+    }else if(req.body.thanks === 'far') {
+        searched_isclicked_thanks = 'fas';
+
+        sql = `SELECT log_idx FROM log ` +
+                `WHERE monster_name = '${searched_monster_name}' ` +
+                `ORDER BY shelf_life DESC LIMIT 1`;
+        console.log(sql);
+        
+        conn.query(sql, (err, rows, fields) => {
+            if(err) {
+                console.log('Error accured' + err);
+            }else {
+                sql_update = `UPDATE log SET thanks = thanks + 1 ` +
+                                `WHERE log_idx = ${rows[0].log_idx}`;
+                console.log(sql_update);
+
+                conn.query(sql_update, (err, rows) => {
+                    if(err) {
+                        console.log(`error accured` + err);
+                    }
+                    else {
+
+                    }
+                });
+            }
+        });
+    }
+    res.redirect('/searched');
+});
+
+app.post('/searched-shit', (req, res) => {
+    var searched_monster_name = req.body.searched_monster_name;
+
+    if(req.body.shit === 'fas') {
+        searched_isclicked_shit = 'far';
+
+        sql = `SELECT log_idx FROM log ` +
+                `WHERE monster_name = '${searched_monster_name}' ` +
+                `ORDER BY shelf_life DESC LIMIT 1`;
+        console.log(sql);
+        
+        conn.query(sql, (err, rows, fields) => {
+            if(err) {
+                console.log('Error accured' + err);
+            }else {
+                sql_update = `UPDATE log SET shit = shit - 1 ` +
+                                `WHERE log_idx = ${rows[0].log_idx}`;
+                console.log(sql_update);
+
+                conn.query(sql_update, (err, rows) => {
+                    if(err) {
+                        console.log(`error accured` + err);
+                    }
+                    else {
+
+                    }
+                });
+            }
+        });
+    }else if(req.body.shit === 'far') {
+        searched_isclicked_shit = 'fas';
+
+        sql = `SELECT log_idx FROM log ` +
+                `WHERE monster_name = '${searched_monster_name}' ` +
+                `ORDER BY shelf_life DESC LIMIT 1`;
+        console.log(sql);
+        
+        conn.query(sql, (err, rows, fields) => {
+            if(err) {
+                console.log('Error accured' + err);
+            }else {
+                sql_update = `UPDATE log SET shit = shit + 1 ` +
+                                `WHERE log_idx = ${rows[0].log_idx}`;
+                console.log(sql_update);
+
+                conn.query(sql_update, (err, rows) => {
+                    if(err) {
+                        console.log(`error accured` + err);
+                    }
+                    else {
+
+                    }
+                });
+            }
+        });
+    }
+    res.redirect('/searched');
+});
 
 app.listen(3000, () => console.log('Server is running on port 3000...'));

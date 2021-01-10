@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster Card</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="body-monstercard">
+    <header>
+
+    </header>
+    <main class="main-monstercard">
+        <div class="container_monstercard">
+            <div class="monstercard">
+                <% if(list !== null || list.length !==0 || list !== 'ERROR' ) { %>
+                    <div class="monstercard-img">
+                        <div class="monstercard-grade"><%=list[0].grade %></div>
+                        <img src="/img/monster_img/<%=list[0].name %>.png" alt="">
+                    </div>
+                    <div class="monstercard-name"><%=list[0].name %></div>
+                    <div class="monstercard-info"><%=list[0].info %></div>
+                    <form action="/searched_post" method="POST">
+                        <input type="text" value="<%=list[0].name %>" name="monstercard_name" class="hide">
+                        <button type="submit" class="monstercard-search_btn">SEARCH!</button>
+                    </form>
+                <% }else { %>
+                    <div class="monstercard-img">
+                        <div class="monstercard-grade">X</div>
+                        <img src="/img/monster_img/empty.png" alt="">
+                    </div>
+                    <div class="monstercard-information">
+                        <div class="monstercard-name">ERROR</div>
+                        <div class="monstercard-info">!ERROR!</div>
+                        <form action="">
+                            <button type="submit">SEARCH!</button>
+                        </form>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <script src="/js/screen/monstercard.js"></script>
+    </footer>
+</body>
+</html>
