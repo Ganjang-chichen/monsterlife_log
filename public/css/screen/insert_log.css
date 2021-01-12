@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+And+White+Picture&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap');
+
+.body-insert{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: tomato;
+}
+
+.insert {
+    padding: 20px;
+    border: black solid 2px;
+    border-radius: 20px;
+    background-color: blanchedalmond;
+}
+
+.insert form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Black And White Picture', sans-serif;
+}
+
+.insert-header {
+    position: relative;
+    margin: 10px;
+}
+
+.insert-header-img img {
+    border-radius: 30px;
+}
+
+.insert-header-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 5%;
+    font-size: 20px;
+    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+}
+
+.insert-values {
+    margin: 10px;
+}
+
+.insert-values input {
+    background-color: rgba(0, 0, 0, 0);
+    border: black solid 2px;
+    height: 50px;
+    font-family: 'Kirang Haerang', cursive;
+    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 25px;
+}
+
+.insert-values input:first-child {
+    width: 150px;
+}
+
+.insert-values input:nth-child(3) {
+    width: 100px;
+}
+
+.insert-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 100px;
+}
+
+.insert-btn {
+    background-color: rgba(0, 0, 0, 0);
+    width: 150px;
+    height: 50px;
+    border: black solid 2px;
+    border-radius: 25px;
+    font-size: 30px;
+    font-family: 'Kirang Haerang', cursive;
+}
+
+@keyframes beat {
+    0% {
+        transform: scale(1.0);
+    }
+    50% {
+        transform: scale(1.1);;
+    }
+    100% {
+        transform: scale(1.0);
+    }
+}
+
+.insert-btn:hover {
+    animation: beat 0.5s ease-in-out infinite;
+}

@@ -7,17 +7,25 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <header></header>
+    <header>
+        <div class="move_back">
+            <form action="/monstercard" method="GET">
+                <button type="submit" class="move_back-btn">
+                    &lt;
+                </button>
+            </form>
+        </div>
+    </header>
     <main class="main-searched">
         <div class="searched">
             <div class="searched_subj">
                 <% if(option === 'monster_name' ) { %>
-                    <span class="searched_subj-option">검색 조건 : 몬스터 %></span>
+                    <div class="searched_subj-option">검색 조건 : 몬스터 %></div>
                 <% }else { %>
-                    <span class="searched_subj-option">검색 조건 : 농장주 %></span>
+                    <div class="searched_subj-option">검색 조건 : 농장주 %></div>
                 <% } %>
-                <span class="dance">| ዪ |</span>
-                <span class="searched_subj-value">검색 값 : <%=value %></span>
+                <div class="dance"> ዪ </div>
+                <div class="searched_subj-value">검색 값 : <%=value %></div>
             </div>
             <div class="searched_idx">
                 <div class="searched_idx-rows searched_idx-rows-col_name ">
@@ -28,7 +36,7 @@
                     <div class="searched_idx-shit">신고</div>
                 </div>
                 <% for(i = 0; i < list.length; i++) { %>
-                    <div class="searched_idx-rows">
+                    <div class="searched_idx-rows" style="animation-delay: <%=(i+1) * 0.2 %>s ; ">
                         <div class="searched_idx-farm_name"><%=list[i].farm_name %></div>
                         <div class="searched_idx-monster_name"><%=list[i].monster_name %></div>
                         <div class="searched_idx-population"><%=list[i].population %></div>
@@ -59,7 +67,7 @@
     </main>
     <footer>
         <script src="https://kit.fontawesome.com/c9ac2544ad.js" crossorigin="anonymous"></script>
-        
+        <script src="/js/component/dance.js"></script>
     </footer>
 </body>
 </html>

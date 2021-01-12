@@ -7,7 +7,15 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="body-monster_tree">
-    <header></header>
+    <header>
+        <div class="move_back">
+            <form action="/index" method="GET">
+                <button type="submit" class="move_back-btn">
+                    &lt;
+                </button>
+            </form>
+        </div>
+    </header>
     <main class="main-monster_tree">
         <% for(i = 0; i < trees.length; i++) { %>
             <% var level = 0; %>
@@ -111,7 +119,7 @@
 
     </main>
     <footer>
-        <script src="/js/component/card.js"></script>
+        <script src="https://kit.fontawesome.com/c9ac2544ad.js" crossorigin="anonymous"></script>
     </footer>
 </body>
 </html>

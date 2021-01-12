@@ -5,9 +5,11 @@
 @import "./screen/monster_tree.css";
 @import "./screen/monstercard.css";
 @import "./screen/searched.css";
+@import "./screen/insert_log.css";
 
 /* component */
 @import "./component/card.css";
+@import "./component/page_move.css";
 
 .hide {
     position: absolute;

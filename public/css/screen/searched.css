@@ -26,11 +26,19 @@
 }
 
 .searched_subj {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
     border-bottom: solid darkred 2px;
     height: 60px;
     margin: 30px 0px;
     text-align: center;
     font-size: 30px;
+}
+
+.dance {
+    width: 70px;
 }
 
 .searched_idx {
@@ -45,7 +53,8 @@
     justify-content: space-around;
     align-items: center;
     font-size: 20px;
-    animation: fadein 0.5s ease-in-out;
+    animation: fadein 0.5s ease-in-out forwards;
+    opacity: 0;
 }
 
 .searched_idx-rows-col_name {

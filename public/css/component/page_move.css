@@ -1,0 +1,27 @@
+
+.move-to_monster_tree {
+    position: fixed;
+    top: 3%;
+    left: 95%;
+}
+
+.move_back {
+    position: fixed;
+    top: 3%;
+    left: 5%;
+    z-index: 1;
+}
+
+.move_back-btn,
+.move-to_monster_tree-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0);
+    border: black solid 2px;
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 1000;
+}

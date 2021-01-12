@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>농장 정보 공유</title>
+    <title>농장 정보 입력</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="body-index">
+<body class="body-insert">
     <header>
         <div class="background-monster_rotate">
             <div class="rainny_monster rainny_monster-pig" id="rain1"><img src="/img/rain_img/리본돼지.png" alt=""></div>
@@ -29,59 +29,47 @@
             <div class="rainny_monster rainny_monster-snail" id="rain15"><img src="/img/rain_img/파란달팽이.png" alt=""></div>
             <div class="rainny_monster rainny_monster-snail" id="rain16"><img src="/img/rain_img/파란달팽이.png" alt=""></div>
         </div>
-        
-        <div class="move-to_monster_tree">
-            <form action="/monster_tree" method="GET">
-                <button type="submit" class="move-to_monster_tree-btn">
-                    <i class="fas fa-tree"></i>
+
+        <div class="move_back">
+            <form action="/index" method="GET">
+                <button type="submit" class="move_back-btn">
+                    &lt;
                 </button>
             </form>
         </div>
+
     </header>
-    <main>
-        <div class="outerline-search_box">
-            <div class="search_box">
-                <form action="/index-monster_search" method="POST">
-                    <span>몬스터 : </span>
-                    <input type="text" name="searcher" class="searcher" value="몹 입력 ㄱ">
-                    <button type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-        <div class="searched_index">
-            <% for(i = 0; i < list.length ; i++) { %>
-                <div class="searched_index-rows" style="animation-delay: <%=(i * 0.1) %>s;">
-                    <div class="searched_index-rows-img">
-                        <img src="/img/monster_img/<%=list[i].name %>.png" alt="">
+    <main class="main-insert">
+        <div class="insert">
+            <form action="/insert_log_insert" method="POST">
+                <div class="insert-header">
+                    <div class="insert-header-img">
+                        <img src="/img/monster_img/<%=list[0].name %>.png" alt="">
                     </div>
-                    
-                    <div>
-                        <%=list[i].name %>
-                    </div>
-                    <div>
-                        <form action="/insert_log_post" method="POST">
-                            <button class="mv-idx_to_monstercard">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                            <input type="text" value="<%=list[i].name %>" class="hide" name="name">
-                        </form>
-                    </div>
-                    <div>
-                        <form action="/monstercard_post" method="POST">
-                            <button class="mv-idx_to_monstercard">
-                                <i class="fas fa-angle-double-right"></i>
-                            </button>
-                            <input type="text" value="<%=list[i].name %>" class="hide" name="name">
-                        </form>
+                    <div class="insert-header-text">
+                        <%=list[0].name %>
                     </div>
                 </div>
-            <% } %>
+                <div class="insert-values">
+                    <input type="text" placeholder="농장주" name="farm_name" class="insert-farm_name" 
+                            maxlength="12" required>
+                    <input type="date" name="input_date" class="input_date" required>
+                    <input type="number" placeholder="중복수" name="population" 
+                            class="insert_population" min="1" max="28" required>
+                    
+                </div>
+                <div class="insert-buttons">
+                    <button type="submit" class="insert-btn">
+                        입력 !
+                    </button>
+                </div>
+                <input type="text" name="monster_name" class="hide" value="<%=list[0].name %>">
+            </form>
         </div>
+
     </main>
     <footer>
-        <script src="https://kit.fontawesome.com/c9ac2544ad.js" crossorigin="anonymous"></script>
+        
     </footer>
 </body>
 </html>

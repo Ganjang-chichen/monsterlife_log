@@ -17,13 +17,28 @@ var searching = `오베론`;
 var option = `monster_name`;
 var searched_isclicked_thanks = 'far';
 var searched_isclicked_shit = 'far';
+var searcher = 'undefined';
 
 app.get('/', (req, res) => {
     res.redirect('/index');
 });
 
 app.get('/index', (req, res) => {
-    res.render('index.ejs');
+    sql = `SELECT name FROM monster WHERE name LIKE ('%${searcher}%')`;
+    console.log(sql);
+    conn.query(sql, (err, rows, fields) => {
+        if(err) {
+            console.log(`error accured at index \n` + err);
+        }else {
+            console.log(rows);
+            res.render('index.ejs', {list: rows});
+        }
+    });
+});
+
+app.post('/index-monster_search', (req, res) => {
+    searcher = req.body.searcher;
+    res.redirect('/index');
 });
 
 app.get('/monster_tree', (req, res) => {
@@ -312,6 +327,69 @@ app.post('/searched-shit', (req, res) => {
         });
     }
     res.redirect('/searched');
+});
+
+app.get('/insert_log', (req, res) => {
+
+    var sql = `SELECT * FROM monster WHERE name = '${selected_monster}'`;
+    conn.query(sql, (err, rows, fields) => {
+        if(err) {
+            console.log('error accuared at insert ' + err);
+            res.redirect('/index');
+        }else {
+            console.log(rows);
+            res.render('insert_log.ejs', {list : rows});
+        }
+    });
+});
+
+app.post('/insert_log_post', (req, res) => {
+    selected_monster = req.body.name;
+    res.redirect('/insert_log');
+})
+
+app.post('/insert_log_insert', (req, res) => {
+    console.log(req.body.input_date);
+    const insert_farm_name = req.body.farm_name;
+    const insert_date = req.body.input_date;
+    const insert_monster_name = req.body.monster_name;
+    const insert_population = req.body.population;
+
+    var sql = `SELECT * FROM log ` +  
+                `WHERE farm_name = '${insert_farm_name}' ` +
+                `AND monster_name = '${insert_monster_name}' ` +
+                `AND date_format(shelf_life, '%Y-%m-%d') = '${insert_date}' `;
+
+    console.log(sql);
+    
+    conn.query(sql, (err, rows, fields) => {
+        if(err) {
+            console.log('error accuared : ' + err);
+        }else {
+            var sql_temp;
+            var IS_EXIST = false;
+            for(i = 0; i < rows.length; i++) {
+                IS_EXIST = true;
+            }
+            if(IS_EXIST) {
+                sql_temp = `UPDATE log SET population = ${insert_population} WHERE log_idx = ${rows[0].log_idx}`;
+            }else {
+                sql_temp = `INSERT log (farm_name, monster_name, shelf_life, population, thanks, shit, overlap) ` +
+                            `VALUES('${insert_farm_name}', '${insert_monster_name}', STR_TO_DATE('${insert_date}', '%Y-%m-%d'), ${insert_population}, 0, 0, 0)`;
+            }
+
+            console.log(sql_temp);
+
+            conn.query(sql_temp, (err, rows) => {
+                if(err) {
+                    console.log('error insert accuared : ' + err);
+                }else {
+                    console.log('insert finish');
+                }
+            });
+        }
+    });
+    res.redirect('/index');
 });
 
 app.listen(3000, () => console.log('Server is running on port 3000...'));
