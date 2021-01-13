@@ -18,6 +18,7 @@ var option = `monster_name`;
 var searched_isclicked_thanks = 'far';
 var searched_isclicked_shit = 'far';
 var searcher = 'undefined';
+var WHEREFROM = '';
 
 app.get('/', (req, res) => {
     res.redirect('/index');
@@ -164,7 +165,7 @@ app.get('/monster_tree', (req, res) => {
 
 app.post('/monstercard_post', (req, res) => {
     selected_monster = req.body.name;
-
+    WHEREFROM = req.body.wherefrom;
     res.redirect('/monstercard');
 });
 
@@ -177,7 +178,7 @@ app.get('/monstercard', (req, res) => {
             res.redirect('/index');
         }else {
             
-            res.render('monster_card.ejs', {list : rows});
+            res.render('monster_card.ejs', {list : rows, wherefrom : WHEREFROM});
         }
 
     });

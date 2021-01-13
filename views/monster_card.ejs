@@ -9,13 +9,23 @@
 </head>
 <body class="body-monstercard">
     <header>
-        <div class="move_back">
-            <form action="/monster_tree" method="GET">
-                <button type="submit" class="move_back-btn">
-                    &lt;
-                </button>
-            </form>
-        </div>
+        <% if(wherefrom === 'monster_tree') { %>
+            <div class="move_back">
+                <form action="/monster_tree" method="GET">
+                    <button type="submit" class="move_back-btn">
+                        &lt;
+                    </button>
+                </form>
+            </div>
+        <% } else { %>
+            <div class="move_back">
+                <form action="/index" method="GET">
+                    <button type="submit" class="move_back-btn">
+                        &lt;
+                    </button>
+                </form>
+            </div>
+        <% } %>
     </header>
     <main class="main-monstercard">
         <div class="container_monstercard">
